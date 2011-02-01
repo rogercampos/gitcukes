@@ -1,0 +1,3 @@
+# Path to a git repo in the filesystem, example:
+repo_dir: "/home/roger/code/gitcukes"
+
