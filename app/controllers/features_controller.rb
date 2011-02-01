@@ -11,10 +11,13 @@ class FeaturesController < ApplicationController
     @feature = Feature.new params[:file]
     @feature.write params[:content]
 
-    File.open(@feature.absolute_path, 'w') do |f|
-      f.write(params[:content].gsub("\r\n", "\n"))
-    end
-
     redirect_to root_url, :notice => "Feature updated"
+  end
+
+  def commit
+    @feature = Feature.new params[:file]
+    @feature.commit
+
+    redirect_to root_url, :notice => "Commited feature #{@feature}."
   end
 end

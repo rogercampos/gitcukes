@@ -21,6 +21,15 @@ class Feature
     "#{REPO_DIR}/features/#{@name}"
   end
 
+  def commit
+    repo = Grit::Repo.new(REPO_DIR)
+
+    Dir.chdir(repo.working_dir) do
+      repo.add("features/#{@name}")
+      repo.commit_index("[Gitcukes] updated #{@name}")
+    end
+  end
+
   class << self
     def load
       Dir.glob("#{REPO_DIR}/features/*.feature").map{|x| new(File.basename(x))}
