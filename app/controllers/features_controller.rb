@@ -7,6 +7,10 @@ class FeaturesController < ApplicationController
     @feature = Feature.new params[:file]
   end
 
+  def show
+    @feature = Feature.new params[:file]
+  end
+
   def update
     @feature = Feature.new params[:file]
     @feature.write params[:content]
