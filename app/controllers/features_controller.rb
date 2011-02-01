@@ -9,6 +9,7 @@ class FeaturesController < ApplicationController
 
   def update
     @feature = Feature.new params[:file]
+    @feature.write params[:content]
 
     File.open(@feature.absolute_path, 'w') do |f|
       f.write(params[:content].gsub("\r\n", "\n"))

@@ -11,6 +11,12 @@ class Feature
     File.read(absolute_path)
   end
 
+  def write(text)
+    File.open(absolute_path, 'w') do |f|
+      f.write(text.gsub("\r\n", "\n"))
+    end
+  end
+
   def absolute_path
     "#{REPO_DIR}/features/#{@name}"
   end
