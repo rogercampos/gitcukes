@@ -30,9 +30,18 @@ class Feature
     end
   end
 
+
   class << self
     def load
       Dir.glob("#{REPO_DIR}/features/*.feature").map{|x| new(File.basename(x))}
+    end
+
+    def push
+      repo = Grit::Repo.new(REPO_DIR)
+
+      Dir.chdir(repo.working_dir) do
+        `git pull && git push`
+      end
     end
   end
 end

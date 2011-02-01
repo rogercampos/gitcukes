@@ -10,14 +10,14 @@ class FeaturesController < ApplicationController
   def update
     @feature = Feature.new params[:file]
     @feature.write params[:content]
+    @feature.commit
 
     redirect_to root_url, :notice => "Feature updated"
   end
 
-  def commit
-    @feature = Feature.new params[:file]
-    @feature.commit
+  def push
+    Feature.push
 
-    redirect_to root_url, :notice => "Commited feature #{@feature}."
+    redirect_to root_url, :notice => "Pushed features"
   end
 end

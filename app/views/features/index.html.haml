@@ -1,8 +1,10 @@
+%p
+  Update features:
+  = button_to "Push", push_features_path
+
 - @features.each do |x|
   = x
   |
   = link_to "Edit", edit_feature_path(:file => x)
-  |
-  = button_to "Commit", commit_feature_path(:file => x)
   %br
 
